@@ -1,0 +1,10 @@
+services:
+  db:
+    image: mysql
+    container_name: logging-practice
+    restart: always
+    environment:
+      MYSQL_DATABASE: logging-practice-db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
