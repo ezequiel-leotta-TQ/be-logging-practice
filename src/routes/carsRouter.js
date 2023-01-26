@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 router.patch('/', async (req, res) => {
   const { patent, dni } = req.body;
   const carOwner = await CarOwner.create({ patent, dni });
+  await Car.update({ where: { patent } }, { actualOwner: dni });
   res.json(carOwner);
 });
 
