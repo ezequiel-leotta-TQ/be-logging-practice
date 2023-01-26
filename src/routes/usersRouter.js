@@ -14,14 +14,17 @@ router.get('/:dni', async (req, res) => {
   res.json(user);
 });
 
-// fix this
 router.post('/', async (req, res) => {
-  const { name, email } = req.body;
-
-  const user = await User.create({ name, email });
+  const { dni, name, surname, userName, password } = req.body;
+  const user = await User.create({ dni, name, surname, userName, password });
   res.json(user);
 });
 
-// patch
+router.patch('/', async (req, res) => {
+  const { dni, newPassword } = req.body;
+  const user = await User.findOne({ where: { dni } });
+  user.password = newPassword
+  res.json(user);
+});
 
 module.exports = router;
