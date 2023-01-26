@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const db = require('./src/db/database');
-const users = require('./src/routes/usersRouter');
+const db = require('./db/database');
+const users = require('./routes/usersRouter');
+const cars = require('./routes/carsRouter');
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 3030;
@@ -19,6 +20,7 @@ const port = process.env.PORT || 3030;
 // Middlewares
 app.use(express.json());
 app.use('/users', users);
+app.use('/cars', cars);
 
 app.listen(port, () => {
   console.log('listening on port ' + port);
