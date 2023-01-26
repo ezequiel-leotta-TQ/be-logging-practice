@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const carOwner = require('..models/carOwner')
 
 const router = require('express').Router();
 
@@ -9,9 +10,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:dni', async (req, res) => {
   const { dni } = req.params;
-  const user = await User.findOne({ where: { dni } });
-  // fetch cars also
-  res.json(user);
+  const userOwns = await carOwner.findAll({ where: { dni } });
+  res.json(userOwns);
 });
 
 router.post('/', async (req, res) => {
