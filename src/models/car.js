@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../db/database');
+const User = require('./user');
 
 const Car = db.define(
   'Cars',
@@ -16,6 +17,13 @@ const Car = db.define(
     },
     year: {
       type: DataTypes.INTEGER,
+    },
+    actualOwner: {
+      type: DataTypes.STRING,
+      references: {
+        model: User,
+        key: 'dni',
+      },
     },
   },
   {
