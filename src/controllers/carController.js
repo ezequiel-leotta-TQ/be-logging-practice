@@ -1,4 +1,4 @@
-import { getAllCars, getCarsByPatent, createCar, updateCarOwner, updateCarActualOwner } from "../services/carService";
+import { getAllCars, getCarsByPatent, createCar, updateCarOwner, updateCarActualOwner } from "../services/carService"
 
 export const getAllCarsController = async (_, res) => {
   try {

@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const dotenv = require('dotenv');
+import Sequelize from 'sequelize';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const { PASSWORD, DATA_BASE } = process.env;
@@ -10,4 +10,4 @@ const db = new Sequelize(DATA_BASE, 'root', PASSWORD, {
     'mysql' /* | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
 });
 
-module.exports = db;
+export default db

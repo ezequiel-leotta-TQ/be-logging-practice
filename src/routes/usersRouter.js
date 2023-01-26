@@ -1,7 +1,10 @@
-const User = require('../models/user');
-const carOwner = require('..models/carOwner')
+/*import User from '../models/user';
+//const CarOwner = require('..models/carOwner')
 
-const router = require('express').Router();
+import express from 'express';
+
+
+const router = express.Router();
 
 router.get('/', async (req, res) => {
   const users = await User.findAll();
@@ -27,4 +30,4 @@ router.patch('/', async (req, res) => {
   res.json(user);
 });
 
-module.exports = router;
+export default router*/

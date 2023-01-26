@@ -1,5 +1,5 @@
-const Car = require('../models/car');
-const CarOwner = require('../models/carOwner');
+import Car from '../models/car';
+import CarOwner from '../models/carOwner'
 
 export const getAllCarsRepository = async (req, res) => {
     try {

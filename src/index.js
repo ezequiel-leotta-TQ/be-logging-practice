@@ -1,9 +1,11 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const db = require('./db/database');
-const users = require('./routes/usersRouter');
-const cars = require('./routes/carsRouter');
+import express from 'express';
+import dotenv from 'dotenv';
+import db from './db/database.mjs';
+//import users from './routes/usersRouter';
+import cars from './routes/carsRouter';
+
 const app = express();
+
 dotenv.config();
 const port = process.env.PORT || 3030;
 
@@ -19,7 +21,7 @@ const port = process.env.PORT || 3030;
 
 // Middlewares
 app.use(express.json());
-app.use('/users', users);
+//app.use('/users', users);
 app.use('/cars', cars);
 
 app.listen(port, () => {
