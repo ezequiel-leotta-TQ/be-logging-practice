@@ -1,24 +1,21 @@
 const { DataTypes } = require('sequelize');
 const db = require('../db/database');
 
-const User = db.define(
-  'Users',
+const Car = db.define(
+  'Cars',
   {
-    dni: {
-      type: DataTypes.INTEGER,
+    patent: {
+      type: DataTypes.STRING,
       unique: true,
     },
-    name: {
+    brand: {
       type: DataTypes.STRING,
     },
-    surname: {
+    model: {
       type: DataTypes.STRING,
     },
-    userName: {
-      type: DataTypes.STRING,
-    },
-    password: {
-      type: DataTypes.STRING,
+    year: {
+      type: DataTypes.INTEGER,
     },
   },
   {
@@ -26,4 +23,4 @@ const User = db.define(
   }
 );
 
-module.exports = User;
+module.exports = Car;
