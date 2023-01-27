@@ -16,7 +16,7 @@ const getAllCarsController = async (_, res, next) => {
     await getAllCars(_, res);
     next();
   } catch (e) {
-    logger.error(e);
+    logger.trace(e);
   }
 };
 
@@ -26,7 +26,7 @@ const getCarsByPatentController = async (req, res, next) => {
     if (isValidPatent(patent)) await getCarsByPatent(req, res);
     next();
   } catch (e) {
-    logger.error(e);
+    logger.trace(e);
   }
 };
 
@@ -38,7 +38,7 @@ const createCarController = async (req, res, next) => {
     else res.status(400).send('Invalid parameters');
     next();
   } catch (e) {
-    logger.error(e);
+    logger.trace(e);
   }
 };
 
@@ -54,7 +54,7 @@ const updateCarOwnerController = async (req, res, next) => {
     }
     next();
   } catch (e) {
-    logger.error(e);
+    logger.trace(e);
   }
 };
 
