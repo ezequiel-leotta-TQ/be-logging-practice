@@ -7,6 +7,7 @@ const getAllCarsRepository = async (req, res) => {
         return await car.findAll();
     }
     catch (e) {
+        logger.error(e)
         return e
     }
 }
@@ -17,6 +18,7 @@ const getCarsByPatentRepository = async (req, res) => {
         return await Car.findOne({ where: { patent } });
     }
     catch (e) {
+        logger.error(e)
         return e
     }
 }
@@ -27,6 +29,7 @@ const createCarRepository = async (req, res) => {
         return await Car.create({ patent, brand, model, year });
     }
     catch (e) {
+        logger.error(e)
         return e
     }
 }
@@ -38,6 +41,7 @@ const updateCarActualOwnerRepository = async (req, res) => {
         return await Car.update({ where: { patent } }, { actualOwner: dni });
     }
     catch (e) {
+        logger.error(e)
         return e
     }
 }
@@ -49,6 +53,7 @@ const updateCarOwnerRepository = async (req, res) => {
         return await CarOwner.create({ patent, dni });
     }
     catch (e) {
+        logger.error(e)
         return e
     }
 }

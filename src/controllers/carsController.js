@@ -5,42 +5,46 @@ const logger = require('../logs')
 const patentRegex = /^[A-Z]{2}[0-9]{3}[A-Z]{2}$/g
 const isValidPatent = (patent) => patentRegex.test(patent)
 
-const getAllCarsController = async (_, res) => {
+const getAllCarsController = async (_, res, next) => {
     try {
         await getAllCars(_, res)
         next()
     } catch (e) {
-        console.log(`Error: ${e}`)
+        logger.error(e)
+        //console.log(`Error: ${e}`)
     }
 }
 
-const getCarsByPatentController = async (req, res) => {
+const getCarsByPatentController = async (req, res, next) => {
     try {
         if (isValidPatent(patent)) await getCarsByPatent(req, res)
         next()
     } catch (e) {
-        console.log(`Error: ${e}`)
+        logger.error(e)
+        //console.log(`Error: ${e}`)
     }
 }
 
 
-const createCarController = async (req, res) => {
+const createCarController = async (req, res, next) => {
     try {
         const { patent, brand, model, year } = req.body
         if (patent && brand && model && year && isValidPatent(patent)) await createCar(req, res)
         else res.status(400).send('Invalid parameters')
         next()
     } catch (e) {
-        console.log(`Error: ${e}`)
+        logger.error(e)
+        //console.log(`Error: ${e}`)
     }
 }
 
-const updateCarOwnerController = async (req, res) => {
+const updateCarOwnerController = async (req, res, next) => {
     try {
         if (isValidPatent(patent)) await updateCarOwner(req, res)
         next()
     } catch (e) {
-        console.log(`Error: ${e}`)
+        logger.error(e) 
+        //console.log(`Error: ${e}`)
     }
 }
 
