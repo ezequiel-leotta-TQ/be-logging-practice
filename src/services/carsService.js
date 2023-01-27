@@ -1,5 +1,7 @@
 const { getAllCarsRepository, getCarsByPatentRepository, createCarRepository, updateCarOwnerRepository, updateCarActualOwnerRepository } = require('../repository/carsRepository');
-const logger = require('../logs')
+const log4js = require('../logs')
+
+const logger = log4js.getLogger('carsService');
 
 const getAllCars = async (req, res) => {
     const cars = await getAllCarsRepository(req, res)
@@ -39,9 +41,8 @@ const updateCarOwner = async (req, res) => {
     const updatedOwner = await updateCarActualOwnerRepository(req, res)
     
     if (newOwner instanceof Error || updatedOwner instanceof Error) {
-        logger.error("Not existing user.")
-        logger.error(updatedOwner.message)
-        res.status(400)
+        logger.error('Not existing user')
+        res.status(404).json({ message: 'Not existing user'})
     } else {
         logger.info("Updating car's owner.")
         res.status(200).json(newOwner)

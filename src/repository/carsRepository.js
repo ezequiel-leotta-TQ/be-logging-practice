@@ -35,28 +35,23 @@ const createCarRepository = async (req, res) => {
 }
 
 const updateCarActualOwnerRepository = async (req, res) => {
-    const { patent } = req.params;
-    const { dni } = req.body;
+    const { patent, dni } = req.body;
 
     try {
         return await Car.update({ where: { patent } }, { actualOwner: dni });
     }
     catch (e) {
-        logger.error("Not existing user.")
-        console.log(e)
         return e
     }
 }
 
 const updateCarOwnerRepository = async (req, res) => {
-    const { patent } = req.params;
-    const { dni } = req.body;
+    const { patent, dni } = req.body;
+    
     try {
         return await CarOwner.create({ patent, dni });
     }
     catch (e) {
-        logger.error(e)
-        console.log(e)
         return e
     }
 }
