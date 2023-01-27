@@ -1,5 +1,6 @@
 const Car = require('../models/car');
 const CarOwner = require('../models/carOwner');
+const logger = require('../logs')
 
 const getAllCarsRepository = async (req, res) => {
     try {

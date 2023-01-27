@@ -1,4 +1,7 @@
 const { getAllCars, getCarsByPatent, createCar, updateCarOwner, updateCarActualOwner } = require('../services/carsService')
+const logger = require('../logs')
+
+
 const patentRegex = /^[A-Z]{2}[0-9]{3}[A-Z]{2}$/g
 const isValidPatent = (patent) => patentRegex.test(patent)
 

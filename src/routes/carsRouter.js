@@ -1,4 +1,5 @@
 const { getAllCarsController, getCarsByPatentController, createCarController, updateCarOwnerController } = require('../controllers/carsController')
+const logger = require('../logs')
 
 const cars = require('express').Router();
 
