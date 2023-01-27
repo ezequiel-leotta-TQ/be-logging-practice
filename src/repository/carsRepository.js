@@ -31,10 +31,10 @@ const createCarRepository = async (req, res) => {
 }
 
 const updateCarActualOwnerRepository = async (req, res) => {
-    const { patent, dni} = req.body;
+    const { patent, dni } = req.body;
 
     try {
-        return await Car.update({ where: { patent }}, { actualOwner: dni });
+        return await Car.update({ where: { patent } }, { actualOwner: dni });
     }
     catch (e) {
         return e
@@ -42,7 +42,8 @@ const updateCarActualOwnerRepository = async (req, res) => {
 }
 
 const updateCarOwnerRepository = async (req, res) => {
-    const { patent, dni } = req.body;    
+    const { patent } = req.params;
+    const { dni } = req.body;
     try {
         return await CarOwner.create({ patent, dni });
     }
