@@ -19,7 +19,7 @@ const Car = db.define(
       type: DataTypes.INTEGER,
     },
     actualOwner: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: User,
         key: 'dni',
