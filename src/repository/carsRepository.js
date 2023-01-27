@@ -35,7 +35,7 @@ const updateCarActualOwnerRepository = async (req, res) => {
   const { patent, dni } = req.body;
 
   try {
-    return await Car.update({ where: { patent } }, { actualOwner: dni });
+    return await Car.update({ actualOwner: dni }, { where: { patent } });
   } catch (e) {
     return e;
   }
