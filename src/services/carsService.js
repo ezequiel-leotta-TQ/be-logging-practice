@@ -37,8 +37,9 @@ const createCar = async (req, res) => {
 const updateCarOwner = async (req, res) => {
     const newOwner = await updateCarOwnerRepository(req, res)
     const updatedOwner = await updateCarActualOwnerRepository(req, res)
+    
     if (newOwner instanceof Error || updatedOwner instanceof Error) {
-        logger.error(newOwner.message)
+        logger.error("Not existing user.")
         logger.error(updatedOwner.message)
         res.status(400)
     } else {

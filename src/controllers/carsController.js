@@ -5,6 +5,7 @@ const logger = require('../logs')
 const patentRegex = /^[A-Z]{2}[0-9]{3}[A-Z]{2}$/g
 const isValidPatent = (patent) => patentRegex.test(patent)
 
+
 const getAllCarsController = async (_, res, next) => {
     try {
         await getAllCars(_, res)
@@ -16,6 +17,7 @@ const getAllCarsController = async (_, res, next) => {
 }
 
 const getCarsByPatentController = async (req, res, next) => {
+    const {patent} = req.params
     try {
         if (isValidPatent(patent)) await getCarsByPatent(req, res)
         next()

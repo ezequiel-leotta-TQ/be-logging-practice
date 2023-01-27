@@ -4,7 +4,7 @@ const logger = require('../logs')
 
 const getAllCarsRepository = async (req, res) => {
     try {
-        return await car.findAll();
+        return await Car.findAll();
     }
     catch (e) {
         logger.error(e)
@@ -35,13 +35,15 @@ const createCarRepository = async (req, res) => {
 }
 
 const updateCarActualOwnerRepository = async (req, res) => {
-    const { patent, dni } = req.body;
+    const { patent } = req.params;
+    const { dni } = req.body;
 
     try {
         return await Car.update({ where: { patent } }, { actualOwner: dni });
     }
     catch (e) {
-        logger.error(e)
+        logger.error("Not existing user.")
+        console.log(e)
         return e
     }
 }
@@ -54,6 +56,7 @@ const updateCarOwnerRepository = async (req, res) => {
     }
     catch (e) {
         logger.error(e)
+        console.log(e)
         return e
     }
 }
