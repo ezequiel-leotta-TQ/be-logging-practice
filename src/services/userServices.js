@@ -7,7 +7,7 @@ const {
 const User = require('../models/user');
 const log4js = require('../logs');
 
-const logger = log4js.getLogger('carsService');
+const logger = log4js.getLogger('usersService');
 
 const getAllUsers = async (req, res) => {
   const users = await getAllUserRepository(req, res);
@@ -37,7 +37,7 @@ const createUser = async (req, res) => {
     logger.error(car.message);
     res.status(400).json({ message: user.message });
   } else {
-    logger.info('User created.')
+    logger.info('User created.');
     res.status(200).json(user);
   }
 };

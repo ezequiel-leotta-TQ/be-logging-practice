@@ -12,7 +12,7 @@ const getAllUserRepository = async (req, res) => {
 };
 
 const getUserByDniRepository = async (req, res) => {
-  try { 
+  try {
     const { dni } = req.params;
     const user = await User.findOne({ where: { dni } });
     const cars = await Car.findAll({ where: dni });

@@ -6,7 +6,7 @@ const {
 } = require('../services/userServices');
 const log4js = require('../logs');
 
-const logger = log4js.getLogger('usersController'); 
+const logger = log4js.getLogger('usersController');
 
 const getAllUsersController = async (req, res, next) => {
   try {
@@ -32,9 +32,9 @@ const createUserController = async (req, res, next) => {
     if (dni && name && surname && userName && password)
       await createUser(req, res);
     else {
-      logger.error('Missing value')
-      res.status(400).send('Missing value')
-    }; 
+      logger.error('Missing value');
+      res.status(400).send('Missing value');
+    }
     next();
   } catch (e) {
     logger.trace(e);
