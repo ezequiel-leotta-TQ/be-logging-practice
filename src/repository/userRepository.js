@@ -1,10 +1,14 @@
 const User = require('../models/user');
 const Car = require('../models/car');
+const logger = require('../logs');
 
 const getAllUserRepository = async (req, res) => {
   try {
     return await User.findAll();
-  } catch (e) {}
+  } catch (e) {
+    logger.error(e);
+    return error;
+  }
 };
 
 const getUserByDniRepository = async (req, res) => {
@@ -13,14 +17,20 @@ const getUserByDniRepository = async (req, res) => {
     const user = await User.findOne({ where: { dni } });
     const cars = await Car.findAll({ where: dni });
     return { user, cars };
-  } catch (error) {}
+  } catch (error) {
+    logger.error(e);
+    return error;
+  }
 };
 
 const createUserRepository = async (req, res) => {
   try {
     const { dni, name, surname, userName, password } = req.body;
     return await User.create({ dni, name, surname, userName, password });
-  } catch (error) {}
+  } catch (error) {
+    logger.error(error);
+    return error;
+  }
 };
 
 const updateUserPasswordRepository = async (req, res) => {
@@ -29,7 +39,9 @@ const updateUserPasswordRepository = async (req, res) => {
     const { password } = req.body;
 
     return await User.update({ where: { dni } }, { password });
-  } catch (error) {}
+  } catch (error) {
+    return error;
+  }
 };
 
 module.exports = {

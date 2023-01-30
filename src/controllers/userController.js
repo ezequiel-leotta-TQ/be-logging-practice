@@ -4,13 +4,16 @@ const {
   createUser,
   updateUserPassword,
 } = require('../services/userServices');
+const log4js = require('../logs');
+
+const logger = log4js.getLogger('usersController');
 
 const getAllUsersController = async (req, res, next) => {
   try {
     await getAllUsers(req, res);
     next();
   } catch (e) {
-    console.log(`Error: ${e}`);
+    logger.trace(e);
   }
 };
 
@@ -19,7 +22,7 @@ const getUserByDniController = async (req, res, next) => {
     await getUserByDni(req, res);
     next();
   } catch (e) {
-    console.log(`Error: ${e}`);
+    logger.trace(e);
   }
 };
 
@@ -28,10 +31,13 @@ const createUserController = async (req, res, next) => {
     const { dni, name, surname, userName, password } = req.body;
     if (dni && name && surname && userName && password)
       await createUser(req, res);
-    else res.status(400).send('Missing value');
+    else {
+      logger.error('Missing value');
+      res.status(400).send('Missing value');
+    }
     next();
   } catch (e) {
-    console.log(`Error: ${e}`);
+    logger.trace(e);
   }
 };
 
@@ -41,7 +47,7 @@ const updateUserPasswordController = async (req, res, next) => {
 
     next();
   } catch (e) {
-    console.log(`Error: ${e}`);
+    logger.trace(e);
   }
 };
 
