@@ -4,6 +4,7 @@ const {
   createUserController,
   updateUserPasswordController,
 } = require('../controllers/userController');
+const logger = require('../logs');
 
 const router = require('express').Router();
 
